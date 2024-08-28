@@ -26,6 +26,8 @@ auto theta(double time, double timestep) -> double {
   for (double i=timestep; i <= time; i+=timestep) {
     theta+=theta_dot*timestep;
     theta_dot+=theta_ddot(theta, theta_dot)*timestep;
+
+    std::cout << "time: " << i*timestep << "s angle: " << theta << "rad velocity: " << theta_dot << "rad/s\n";
   }
   
   return theta;
@@ -37,7 +39,7 @@ int main() {
   std::cin >> total_time >> accuracy;
   timestep = 1.0/accuracy;
 
-  std::cout << "theta is: " << theta(total_time, timestep);
+  theta(total_time, timestep);
 
   return 0;
 }
